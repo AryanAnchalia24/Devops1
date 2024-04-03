@@ -1,0 +1,22 @@
+name: Deploy Docker Image
+
+on:
+  push:
+    branches: 
+      - main
+  
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Build the Docker image
+      uses: actions/checkout@v3
+
+    - name: Pull Docker image from docker hub
+      run: docker pull anchaliaaryan/imgde:latest
+
+    - name: Run
+      run: docker run -d -it anchaliaaryan/imgde:latest
